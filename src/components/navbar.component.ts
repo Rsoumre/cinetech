@@ -1,3 +1,4 @@
+import "./navbar.css";
 import { SearchService } from "../services/search.service";
 
 export interface NavbarProps {

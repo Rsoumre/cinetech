@@ -1,0 +1,21 @@
+.movies-page {
+	width: 100%;
+}
+
+.movies-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+#pagination {
+	margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+	.movies-grid {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 1rem;
+	}
+}

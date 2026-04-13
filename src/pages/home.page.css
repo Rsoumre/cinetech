@@ -1,0 +1,22 @@
+.home-page {
+	width: 100%;
+}
+
+.home-section {
+	margin-bottom: 3rem;
+	text-align: left;
+}
+
+.carousel {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+	.carousel {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 1rem;
+	}
+}

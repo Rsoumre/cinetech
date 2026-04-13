@@ -1,3 +1,4 @@
+import "./detail.page.css";
 import { MovieService } from "../services/movie.service";
 import { TVService } from "../services/tv.service";
 import { CommentService } from "../services/comment.service";

@@ -1,3 +1,5 @@
+import "./pagination.css";
+
 export interface PaginationProps {
 	currentPage: number;
 	totalPages: number;

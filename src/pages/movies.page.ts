@@ -1,3 +1,4 @@
+import "./movies.page.css";
 import { MovieService } from "../services/movie.service";
 import { CardComponent } from "../components/card.component";
 import { PaginationComponent } from "../components/pagination.component";

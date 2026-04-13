@@ -1,0 +1,12 @@
+.detail-page {
+	width: 100%;
+	text-align: left;
+}
+
+.detail-page > h1 {
+	margin-bottom: 1.5rem;
+}
+
+.detail-page button {
+	margin-bottom: 2rem;
+}

@@ -1,3 +1,4 @@
+import "./series.page.css";
 import { TVService } from "../services/tv.service";
 import { CardComponent } from "../components/card.component";
 import { PaginationComponent } from "../components/pagination.component";

@@ -1,3 +1,4 @@
+import "./favorites.page.css";
 import { FavoriteService } from "../services/favorite.service";
 import { CardComponent } from "../components/card.component";
 

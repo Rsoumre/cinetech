@@ -1,3 +1,4 @@
+import "./comment.css";
 import type { comment } from "../models/comment.model";
 
 export class CommentComponent {

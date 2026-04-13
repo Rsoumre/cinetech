@@ -1,3 +1,4 @@
+import "./home.page.css";
 import { MovieService } from "../services/movie.service";
 import { TVService } from "../services/tv.service";
 import { CardComponent } from "../components/card.component";
