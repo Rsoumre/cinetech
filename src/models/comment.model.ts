@@ -1,8 +1,8 @@
 export interface comment {
-    id : number;
-    mediaId : number;
-    content : string;
-    author : string;
-    createdAT : string; 
-    replies? : comment[] // struture recursive pour les réponses aux commentaires
+	id: string;
+	author: string;
+	text: string;
+	timestamp: Date;
+	rating: number;
+	replies?: comment[];
 }
