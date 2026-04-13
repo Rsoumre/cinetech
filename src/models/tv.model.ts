@@ -8,5 +8,5 @@ export interface TVSHOW {
     first_air_date: string;
     vote_average: number;
     genre_ids: number[];
-    popularity: number;
+    popularity: number
 }
