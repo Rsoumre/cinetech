@@ -15,8 +15,8 @@ export class HomePage {
 			const moviesResponse = await MovieService.getPopular(1);
 			const tvResponse = await TVService.getPopular(1);
 
-			const movies = moviesResponse.results?.slice(0, 6) || [];
-			const tvShows = tvResponse.results?.slice(0, 6) || [];
+			const movies = moviesResponse.results?.slice(0, 4) || [];
+			const tvShows = tvResponse.results?.slice(0, 4) || [];
 
 			container.innerHTML = `
                 <section class="home-section">
