@@ -1,6 +1,7 @@
 .detail-page {
 	width: 100%;
 	text-align: left;
+	padding: 0;
 }
 
 .detail-page > h1 {
@@ -9,4 +10,22 @@
 
 .detail-page button {
 	margin-bottom: 2rem;
+	padding: 0.7rem 1rem;
+	border-radius: 10px;
+	border: 1px solid var(--accent-border);
+	background: linear-gradient(90deg, var(--accent), var(--accent-2));
+	color: white;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.detail-page button:hover {
+	transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+	.detail-page {
+		padding: 0;
+	}
 }

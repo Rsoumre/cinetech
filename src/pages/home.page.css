@@ -2,6 +2,96 @@
 	width: 100%;
 }
 
+.home-hero {
+	position: relative;
+	overflow: hidden;
+	min-height: clamp(280px, 48vw, 460px);
+	border-radius: 18px;
+	display: flex;
+	align-items: flex-end;
+	padding: clamp(1.2rem, 3vw, 2.2rem);
+	margin-bottom: 2.2rem;
+	background:
+		linear-gradient(
+			100deg,
+			rgba(8, 10, 16, 0.95) 8%,
+			rgba(8, 10, 16, 0.72) 45%,
+			rgba(8, 10, 16, 0.26) 75%
+		),
+		var(--hero-image);
+	background-size: cover;
+	background-position: center;
+	border: 1px solid rgba(255, 255, 255, 0.11);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.home-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(
+		circle at 85% 18%,
+		rgba(255, 138, 0, 0.28),
+		transparent 35%
+	);
+	pointer-events: none;
+}
+
+.home-hero-content {
+	position: relative;
+	z-index: 1;
+	max-width: 640px;
+}
+
+.home-hero-kicker {
+	margin: 0 0 0.45rem;
+	color: #ffd5bf;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 0.8rem;
+}
+
+.home-hero-overview {
+	margin: 0.55rem 0 1.1rem;
+	color: #d8dae4;
+	max-width: 54ch;
+}
+
+.home-hero-actions {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.hero-btn {
+	padding: 0.72rem 1.1rem;
+	border-radius: 10px;
+	border: 1px solid transparent;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.hero-btn-primary {
+	background: linear-gradient(90deg, var(--accent), var(--accent-2));
+	color: #fff;
+}
+
+.hero-btn-primary:hover {
+	transform: translateY(-1px);
+}
+
+.hero-btn-secondary {
+	background: rgba(13, 16, 24, 0.72);
+	color: #fff;
+	border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-btn-secondary:hover {
+	background: rgba(28, 33, 48, 0.9);
+}
+
 .home-section {
 	margin-bottom: 3rem;
 	text-align: left;
@@ -9,14 +99,25 @@
 
 .carousel {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
 	gap: 1.5rem;
-	margin-top: 1.5rem;
+	margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
+	.home-hero {
+		min-height: 300px;
+		border-radius: 14px;
+		padding: 1rem;
+		align-items: flex-end;
+	}
+
+	.home-hero-overview {
+		font-size: 0.95rem;
+	}
+
 	.carousel {
-		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 		gap: 1rem;
 	}
 }
