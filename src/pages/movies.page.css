@@ -2,11 +2,15 @@
 	width: 100%;
 }
 
+.movies-page > h1 {
+	margin-bottom: 3.7rem;
+}
+
 .movies-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
 	gap: 1.5rem;
-	margin-top: 1.5rem;
+	margin-top: 0;
 }
 
 #pagination {

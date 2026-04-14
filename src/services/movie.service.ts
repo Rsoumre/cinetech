@@ -15,7 +15,7 @@ export class MovieService {
 		return APIClient.request<Movie>({
 			endpoint: ENDPOINTS.MOVIE_DETAILS(id),
 			params: {
-				append_to_response: "credits,recommendations",
+				append_to_response: "credits,recommendations,videos,images",
 			},
 		});
 	}

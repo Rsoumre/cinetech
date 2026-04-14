@@ -4,7 +4,11 @@ import { CardComponent } from "../components/card.component";
 
 export class FavoritesPage {
 	static async render(
-		onNavigate: (page: string, id?: number) => void,
+		onNavigate: (
+			page: string,
+			id?: number,
+			mediaType?: "movie" | "tv",
+		) => void,
 	): Promise<HTMLElement> {
 		const container = document.createElement("div");
 		container.className = "favorites-page";
@@ -24,7 +28,7 @@ export class FavoritesPage {
 						title: fav.title,
 						image: fav.poster_path,
 						rating: 0,
-						onClick: () => onNavigate("detail", fav.id),
+						onClick: () => onNavigate("detail", fav.id, fav.type),
 					});
 					grid.appendChild(card);
 				});

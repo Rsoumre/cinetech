@@ -15,7 +15,7 @@ export class TVService {
 		return APIClient.request<TVSHOW>({
 			endpoint: ENDPOINTS.TV_DETAILS(id),
 			params: {
-				append_to_response: "credits,recommendations",
+				append_to_response: "credits,recommendations,videos,images",
 			},
 		});
 	}

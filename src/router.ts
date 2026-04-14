@@ -15,47 +15,54 @@ export class Router {
 		this.pageContent = document.createElement("main");
 		this.pageContent.id = "page-content";
 		this.navbar = NavbarComponent.render({
-			onNavigate: (page, id) => this.navigate(page, id),
+			onNavigate: (page, id, mediaType) =>
+				this.navigate(page, id, mediaType),
 			onSearch: (query) => this.handleSearch(query),
 		});
 		this.app.appendChild(this.navbar);
 		this.app.appendChild(this.pageContent);
 	}
 
-	async navigate(page: string, id?: number): Promise<void> {
+	async navigate(
+		page: string,
+		id?: number,
+		mediaType?: "movie" | "tv",
+	): Promise<void> {
 		try {
 			let pageElement: HTMLElement;
 
 			switch (page) {
 				case "home":
-					pageElement = await HomePage.render((p, i) =>
-						this.navigate(p, i),
+					pageElement = await HomePage.render((p, i, t) =>
+						this.navigate(p, i, t),
 					);
 					break;
 				case "movies":
-					pageElement = await MoviesPage.render((p, i) =>
-						this.navigate(p, i),
+					pageElement = await MoviesPage.render((p, i, t) =>
+						this.navigate(p, i, t),
 					);
 					break;
 				case "series":
-					pageElement = await SeriesPage.render((p, i) =>
-						this.navigate(p, i),
+					pageElement = await SeriesPage.render((p, i, t) =>
+						this.navigate(p, i, t),
 					);
 					break;
 				case "detail":
 					if (!id) throw new Error("ID requis pour la page détail");
-					pageElement = await DetailPage.render(id, "movie", (p, i) =>
-						this.navigate(p, i),
+					pageElement = await DetailPage.render(
+						id,
+						mediaType || "movie",
+						(p, i, t) => this.navigate(p, i, t),
 					);
 					break;
 				case "favorites":
-					pageElement = await FavoritesPage.render((p, i) =>
-						this.navigate(p, i),
+					pageElement = await FavoritesPage.render((p, i, t) =>
+						this.navigate(p, i, t),
 					);
 					break;
 				default:
-					pageElement = await HomePage.render((p, i) =>
-						this.navigate(p, i),
+					pageElement = await HomePage.render((p, i, t) =>
+						this.navigate(p, i, t),
 					);
 			}
 

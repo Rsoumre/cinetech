@@ -8,7 +8,11 @@ export class SeriesPage {
 	private static totalPages = 1;
 
 	static async render(
-		onNavigate: (page: string, id?: number) => void,
+		onNavigate: (
+			page: string,
+			id?: number,
+			mediaType?: "movie" | "tv",
+		) => void,
 	): Promise<HTMLElement> {
 		const container = document.createElement("div");
 		container.className = "series-page";
@@ -32,7 +36,7 @@ export class SeriesPage {
 						title: show.name || "Sans titre",
 						image: show.poster_path,
 						rating: show.vote_average || 0,
-						onClick: () => onNavigate("detail", show.id),
+						onClick: () => onNavigate("detail", show.id, "tv"),
 					});
 					grid.appendChild(card);
 				});

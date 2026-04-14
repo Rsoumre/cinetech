@@ -2,7 +2,7 @@ import "./navbar.css";
 import { SearchService } from "../services/search.service";
 
 export interface NavbarProps {
-	onNavigate: (page: string, id?: number) => void;
+	onNavigate: (page: string, id?: number, mediaType?: "movie" | "tv") => void;
 	onSearch: (query: string) => void;
 }
 
@@ -79,7 +79,11 @@ export class NavbarComponent {
 								const id = parseInt(
 									a.getAttribute("data-id") || "0",
 								);
-								props.onNavigate("detail", id);
+								const mediaType =
+									a.getAttribute("data-type") === "tv"
+										? "tv"
+										: "movie";
+								props.onNavigate("detail", id, mediaType);
 								searchInput.value = "";
 								searchResults.classList.add("hidden");
 							});
