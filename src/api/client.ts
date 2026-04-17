@@ -32,7 +32,7 @@ export class APIClient {
 				throw {
 					status: response.status,
 					message: `HTTP ${response.status}: ${response.statusText}`,
-				} as APIError;
+				} 
 			}
 
 			return (await response.json()) as T;
