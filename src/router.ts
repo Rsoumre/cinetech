@@ -33,18 +33,18 @@ export class Router {
 
 			switch (page) {
 				case "home":
-					pageElement = await HomePage.render((p, i, t) =>
-						this.navigate(p, i, t),
+					pageElement = await HomePage.render((page, id, type) =>
+						this.navigate(page, id, type),
 					);
 					break;
 				case "movies":
-					pageElement = await MoviesPage.render((p, i, t) =>
-						this.navigate(p, i, t),
+					pageElement = await MoviesPage.render((page, id, type) =>
+						this.navigate(page, id, type),
 					);
 					break;
 				case "series":
-					pageElement = await SeriesPage.render((p, i, t) =>
-						this.navigate(p, i, t),
+					pageElement = await SeriesPage.render((page, id, type) =>
+						this.navigate(page, id, type),
 					);
 					break;
 				case "detail":
@@ -52,17 +52,17 @@ export class Router {
 					pageElement = await DetailPage.render(
 						id,
 						mediaType || "movie",
-						(p, i, t) => this.navigate(p, i, t),
+						(page, id, type) => this.navigate(page, id, type),
 					);
 					break;
 				case "favorites":
-					pageElement = await FavoritesPage.render((p, i, t) =>
-						this.navigate(p, i, t),
+					pageElement = await FavoritesPage.render((page, id, type	) =>
+						this.navigate(page, id, type),
 					);
 					break;
 				default:
-					pageElement = await HomePage.render((p, i, t) =>
-						this.navigate(p, i, t),
+					pageElement = await HomePage.render((page, id, type) =>
+						this.navigate(page, id, type),
 					);
 			}
 
