@@ -101,6 +101,17 @@
 .home-section {
 	margin-bottom: 3rem;
 	text-align: left;
+	position: relative;
+}
+
+.home-section::after {
+	content: "";
+	display: block;
+	width: 68px;
+	height: 3px;
+	margin-top: 10px;
+	background: linear-gradient(90deg, var(--accent), var(--accent-2));
+	border-radius: 999px;
 }
 
 .carousel {

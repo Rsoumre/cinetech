@@ -2,14 +2,7 @@ import "./comment.css";
 import type { comment } from "../models/comment.model";
 
 export class CommentComponent {
-	static render(
-		comments: comment[],
-		_onReplySubmit?: (
-			parentId: string,
-			text: string,
-			author: string,
-		) => void,
-	): HTMLElement {
+	static render(comments: comment[]): HTMLElement {
 		const container = document.createElement("div");
 		container.className = "comments-section";
 
@@ -27,7 +20,6 @@ export class CommentComponent {
                 </div>
                 <div class="comment-text">${c.text}</div>
                 <div class="comment-rating">⭐ ${c.rating || 0}/10</div>
-                <button class="reply-btn" data-comment-id="${c.id}">Répondre</button>
             `;
 
 			if (c.replies && c.replies.length > 0) {
@@ -50,7 +42,7 @@ export class CommentComponent {
 	}
 
 	static renderForm(
-		onSubmit: (text: string, author: string) => void,
+		onSubmit: (text: string, author: string, rating: number) => void,
 	): HTMLElement {
 		const form = document.createElement("form");
 		form.className = "comment-form";
@@ -81,15 +73,14 @@ export class CommentComponent {
 			const text = (
 				form.querySelector("#text-input") as HTMLTextAreaElement
 			).value;
+			const rating = parseInt(
+				(form.querySelector("#rating-input") as HTMLInputElement).value,
+			);
 
 			if (author && text) {
-				onSubmit(text, author);
-				(
-					form.querySelector("#author-input") as HTMLInputElement
-				).value = "";
-				(
-					form.querySelector("#text-input") as HTMLTextAreaElement
-				).value = "";
+				onSubmit(text, author, rating);
+				(form.querySelector("#author-input") as HTMLInputElement).value = "";
+				(form.querySelector("#text-input") as HTMLTextAreaElement).value = "";
 			}
 		});
 

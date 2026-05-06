@@ -17,7 +17,6 @@ export class Router {
 		this.navbar = NavbarComponent.render({
 			onNavigate: (page, id, mediaType) =>
 				this.navigate(page, id, mediaType),
-			onSearch: (query) => this.handleSearch(query),
 		});
 		this.app.appendChild(this.navbar);
 		this.app.appendChild(this.pageContent);
@@ -75,7 +74,4 @@ export class Router {
 		}
 	}
 
-	private handleSearch(query: string): void {
-		console.log("Recherche:", query);
-	}
 }

@@ -3,7 +3,6 @@ import { SearchService } from "../services/search.service";
 
 export interface NavbarProps {
 	onNavigate: (page: string, id?: number, mediaType?: "movie" | "tv") => void;
-	onSearch: (query: string) => void;
 }
 
 export class NavbarComponent {

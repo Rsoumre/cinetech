@@ -16,8 +16,6 @@
 
 	--sans: "Manrope", "Segoe UI", sans-serif;
 	--heading: "Oswald", "Arial Narrow", sans-serif;
-	--mono: "JetBrains Mono", Consolas, monospace;
-
 	font: 17px/150% var(--sans);
 	letter-spacing: 0.1px;
 	color-scheme: dark;
@@ -77,17 +75,6 @@ p {
 	margin: 0;
 }
 
-code {
-	font-family: var(--mono);
-	display: inline-flex;
-	border-radius: 4px;
-	color: var(--text-h);
-	font-size: 15px;
-	line-height: 135%;
-	padding: 4px 8px;
-	background: var(--code-bg);
-}
-
 #app {
 	width: 100%;
 	max-width: none;
@@ -113,42 +100,6 @@ code {
 .detail-page,
 .favorites-page {
 	width: 100%;
-}
-
-.home-section {
-	margin-bottom: 3.4rem;
-	text-align: left;
-	position: relative;
-}
-
-.home-section::after {
-	content: "";
-	display: block;
-	width: 68px;
-	height: 3px;
-	margin-top: 10px;
-	background: linear-gradient(90deg, var(--accent), var(--accent-2));
-	border-radius: 999px;
-}
-
-.carousel,
-.movies-grid,
-.series-grid,
-.favorites-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-	gap: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-@media (max-width: 768px) {
-	.carousel,
-	.movies-grid,
-	.series-grid,
-	.favorites-grid {
-		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-		gap: 1rem;
-	}
 }
 
 /* Responsive */

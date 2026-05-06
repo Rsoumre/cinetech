@@ -4,23 +4,21 @@ import { CardComponent } from "../components/card.component";
 import { PaginationComponent } from "../components/pagination.component";
 
 export class SeriesPage {
-	private static currentPage = 1;
-	private static totalPages = 1;
-
 	static async render(
 		onNavigate: (
 			page: string,
 			id?: number,
 			mediaType?: "movie" | "tv",
 		) => void,
+		page: number = 1,
 	): Promise<HTMLElement> {
 		const container = document.createElement("div");
 		container.className = "series-page";
 
 		try {
-			const response = await TVService.getPopular(this.currentPage);
+			const response = await TVService.getPopular(page);
 			const series = response.results || [];
-			this.totalPages = response.total_pages || 1;
+			const totalPages = response.total_pages || 1;
 
 			container.innerHTML = `
                 <h1>Toutes les Séries</h1>
@@ -45,11 +43,10 @@ export class SeriesPage {
 			const paginationContainer = container.querySelector("#pagination");
 			if (paginationContainer) {
 				const pagination = PaginationComponent.render({
-					currentPage: this.currentPage,
-					totalPages: Math.min(this.totalPages, 100),
-					onPageChange: async (page) => {
-						this.currentPage = page;
-						const newContainer = await this.render(onNavigate);
+					currentPage: page,
+					totalPages: Math.min(totalPages, 100),
+					onPageChange: async (newPage) => {
+						const newContainer = await this.render(onNavigate, newPage);
 						container.replaceWith(newContainer);
 					},
 				});

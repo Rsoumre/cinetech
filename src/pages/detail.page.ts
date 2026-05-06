@@ -188,8 +188,8 @@ export class DetailPage {
 				commentListContainer.appendChild(commentList);
 			}
 
-			const commentForm = CommentComponent.renderForm((text, author) => {
-				CommentService.add(id, type, text, author);
+			const commentForm = CommentComponent.renderForm((text, author, rating) => {
+				CommentService.add(id, type, text, author, rating);
 				onNavigate("detail", id, type);
 			});
 			const commentFormContainer =

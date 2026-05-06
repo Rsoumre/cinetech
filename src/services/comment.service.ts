@@ -19,13 +19,14 @@ export class CommentService {
 		type: "movie" | "tv",
 		text: string,
 		author: string,
+		rating: number = 0,
 	): comment {
 		const newComment: comment = {
 			id: Date.now().toString(),
 			author,
 			text,
 			timestamp: new Date(),
-			rating: 0,
+			rating,
 			replies: [],
 		};
 
