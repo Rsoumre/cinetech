@@ -1,77 +1,29 @@
-import { HomePage } from "./pages/home.page";
-import { MoviesPage } from "./pages/movies.page";
-import { SeriesPage } from "./pages/series.page";
-import { DetailPage } from "./pages/detail.page";
-import { FavoritesPage } from "./pages/favorites.page";
-import { NavbarComponent } from "./components/navbar.component";
+import { pagAccueil } from './pages/home'
+import { pagFilms } from './pages/films'
+import { pagSeries } from './pages/series'
+import { pagFavoris } from './pages/favoris'
+import { pagDetail } from './pages/detail'
 
-export class Router {
-	private app: HTMLElement;
-	private pageContent: HTMLElement;
-	private navbar: HTMLElement;
+const contenu = document.createElement('main')
 
-	constructor(app: HTMLElement) {
-		this.app = app;
-		this.pageContent = document.createElement("main");
-		this.pageContent.id = "page-content";
-		this.navbar = NavbarComponent.render({
-			onNavigate: (page, id, mediaType) =>
-				this.navigate(page, id, mediaType),
-		});
-		this.app.appendChild(this.navbar);
-		this.app.appendChild(this.pageContent);
-	}
+export function initialiserRouter(app: HTMLElement) {
+  app.appendChild(contenu)
+  allerVers('accueil')
+}
 
-	async navigate(
-		page: string,
-		id?: number,
-		mediaType?: "movie" | "tv",
-	): Promise<void> {
-		try {
-			let pageElement: HTMLElement;
+export async function allerVers(page: string, id?: number, type?: string, numPage?: number) {
+  contenu.innerHTML = ''
+  window.scrollTo(0, 0)
 
-			switch (page) {
-				case "home":
-					pageElement = await HomePage.render((page, id, type) =>
-						this.navigate(page, id, type),
-					);
-					break;
-				case "movies":
-					pageElement = await MoviesPage.render((page, id, type) =>
-						this.navigate(page, id, type),
-					);
-					break;
-				case "series":
-					pageElement = await SeriesPage.render((page, id, type) =>
-						this.navigate(page, id, type),
-					);
-					break;
-				case "detail":
-					if (!id) throw new Error("ID requis pour la page détail");
-					pageElement = await DetailPage.render(
-						id,
-						mediaType || "movie",
-						(page, id, type) => this.navigate(page, id, type),
-					);
-					break;
-				case "favorites":
-					pageElement = await FavoritesPage.render((page, id, type	) =>
-						this.navigate(page, id, type),
-					);
-					break;
-				default:
-					pageElement = await HomePage.render((page, id, type) =>
-						this.navigate(page, id, type),
-					);
-			}
-
-			this.pageContent.innerHTML = "";
-			this.pageContent.appendChild(pageElement);
-			window.scrollTo(0, 0);
-		} catch (error) {
-			console.error("Navigation error:", error);
-			this.pageContent.innerHTML = "<h1>Erreur lors du chargement</h1>";
-		}
-	}
-
+  if (page === 'accueil') {
+    contenu.appendChild(await pagAccueil())
+  } else if (page === 'films') {
+    contenu.appendChild(await pagFilms(numPage || 1))
+  } else if (page === 'series') {
+    contenu.appendChild(await pagSeries(numPage || 1))
+  } else if (page === 'favoris') {
+    contenu.appendChild(pagFavoris())
+  } else if (page === 'detail' && id && type) {
+    contenu.appendChild(await pagDetail(id, type))
+  }
 }

@@ -1,14 +1,8 @@
-import "./style.css";
-import { Router } from "./router";
+import './style.css'
+import { creerNavbar } from './components/navbar'
+import { initialiserRouter } from './router'
 
-document.addEventListener("DOMContentLoaded", () => {
-	const app = document.querySelector<HTMLDivElement>("#app");
+const app = document.querySelector<HTMLDivElement>('#app')!
 
-	if (!app) {
-		console.error("App container not found");
-		return;
-	}
-
-	const router = new Router(app);
-	router.navigate("home");
-});
+app.appendChild(creerNavbar())
+initialiserRouter(app)

@@ -1,0 +1,86 @@
+.commentaires {
+  margin-top: 48px;
+  padding-bottom: 48px;
+}
+
+.commentaires h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.formulaire-commentaire {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid #2a2a2a;
+}
+
+.formulaire-commentaire input,
+.formulaire-commentaire textarea {
+  background: #242424;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: white;
+  padding: 10px 14px;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.formulaire-commentaire input:focus,
+.formulaire-commentaire textarea:focus {
+  border-color: #555;
+}
+
+.formulaire-commentaire input::placeholder,
+.formulaire-commentaire textarea::placeholder {
+  color: #666;
+}
+
+.formulaire-commentaire textarea {
+  height: 90px;
+  resize: vertical;
+}
+
+.formulaire-commentaire button {
+  width: fit-content;
+  padding: 9px 22px;
+  background: #e50914;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.formulaire-commentaire button:hover {
+  background: #b00710;
+}
+
+.commentaire {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border: 1px solid #2a2a2a;
+}
+
+.commentaire-auteur {
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.commentaire-texte {
+  color: #bbb;
+  font-size: 14px;
+  line-height: 1.6;
+}
