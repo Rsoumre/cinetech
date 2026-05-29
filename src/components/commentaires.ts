@@ -11,6 +11,8 @@ function lireCommentaires(id: number, type: string) {
   return tous[getCles(id, type)] || []
 }
 
+// commentaires: any[] → un tableau (array) d'éléments de n'importe quel type
+// "any" veut dire "peu importe le type" — ici chaque commentaire est un objet { auteur, texte }
 function sauvegarderCommentaires(id: number, type: string, commentaires: any[]) {
   const tous = JSON.parse(localStorage.getItem(CLE_STORAGE) || '{}')
   tous[getCles(id, type)] = commentaires

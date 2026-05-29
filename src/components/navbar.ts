@@ -18,13 +18,14 @@ export function creerNavbar(): HTMLElement {
   `
 
   nav.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => allerVers(btn.dataset.page!))
+    btn.addEventListener('click', () => allerVers(btn.dataset.page as string))
   })
 
-  const input = nav.querySelector<HTMLInputElement>('.recherche-input')!
-  const suggestions = nav.querySelector<HTMLElement>('.suggestions')!
+  const input = nav.querySelector('.recherche-input') as HTMLInputElement
+  const suggestions = nav.querySelector('.suggestions') as HTMLElement
 
-  let timer: ReturnType<typeof setTimeout>
+  // number → setTimeout retourne juste un numéro d'identifiant
+  let timer: number
 
   input.addEventListener('input', () => {
     clearTimeout(timer)
@@ -35,8 +36,6 @@ export function creerNavbar(): HTMLElement {
       const donnees = await appelerAPI(`search/multi&query=${encodeURIComponent(texte)}`)
       const resultats = (donnees.results || []).filter((i: any) => i.media_type === 'movie' || i.media_type === 'tv').slice(0, 6)
 
-      if (resultats.length === 0) { suggestions.style.display = 'none'; return }
-
       suggestions.innerHTML = resultats.map((item: any) => {
         const titre = item.media_type === 'movie' ? item.title : item.name
         const poster = item.poster_path ? `https://image.tmdb.org/t/p/w92${item.poster_path}` : 'https://via.placeholder.com/36x54?text=?'
@@ -46,22 +45,17 @@ export function creerNavbar(): HTMLElement {
         </div>`
       }).join('')
 
-      suggestions.querySelectorAll<HTMLElement>('.suggestion-item').forEach(el => {
-        el.addEventListener('click', () => {
+      suggestions.querySelectorAll('.suggestion-item').forEach(el => {
+        const element = el as HTMLElement
+        element.addEventListener('click', () => {
           suggestions.style.display = 'none'
           input.value = ''
-          allerVers('detail', Number(el.dataset.id), el.dataset.type!)
+          allerVers('detail', Number(element.dataset.id), element.dataset.type as string)
         })
       })
 
       suggestions.style.display = 'block'
     }, 400)
-  })
-
-  document.addEventListener('click', (e) => {
-    if (!nav.querySelector('.recherche-wrapper')!.contains(e.target as Node)) {
-      suggestions.style.display = 'none'
-    }
   })
 
   return nav

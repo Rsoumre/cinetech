@@ -18,6 +18,7 @@ export async function allerVers(page: string, id?: number, type?: string, numPag
   if (page === 'accueil') {
     contenu.appendChild(await pagAccueil())
   } else if (page === 'films') {
+    // numPage || 1 → si numPage est undefined (pas donné), on utilise 1 par défaut
     contenu.appendChild(await pagFilms(numPage || 1))
   } else if (page === 'series') {
     contenu.appendChild(await pagSeries(numPage || 1))

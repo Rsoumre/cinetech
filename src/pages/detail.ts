@@ -3,6 +3,7 @@ import { appelerAPI } from '../api'
 import { allerVers } from '../router'
 import { creerCommentaires } from '../components/commentaires'
 
+// : boolean → cette fonction retourne toujours true ou false
 function estFavori(id: number, type: string): boolean {
   const favoris = JSON.parse(localStorage.getItem('cinetech_favoris') || '[]')
   return favoris.some((f: any) => f.id === id && f.type === type)
@@ -27,7 +28,7 @@ export async function pagDetail(id: number, type: string): Promise<HTMLElement> 
   const chemin = type === 'film' ? `movie/${id}` : `tv/${id}`
   const cheminSimilaires = type === 'film' ? `movie/${id}/recommendations` : `tv/${id}/recommendations`
 
-  // On fait les appels en même temps pour aller plus vite
+  // Promise.all([...]) → lance les deux appels API EN MÊME TEMPS 
   const [donnees, similairesData] = await Promise.all([
     appelerAPI(chemin),
     appelerAPI(cheminSimilaires),
@@ -44,7 +45,10 @@ export async function pagDetail(id: number, type: string): Promise<HTMLElement> 
   let realisateur = null
   if (type === 'film') {
     const credits = await appelerAPI(`movie/${id}/credits`)
-    realisateur = (credits.crew || []).find((p: any) => p.job === 'Director')?.name || 'Inconnu'
+    // On cherche la personne avec le rôle "Director" dans l'équipe
+    const directeur = (credits.crew || []).find((p: any) => p.job === 'Director')
+    // Si on l'a trouvé, on prend son nom — sinon on met 'Inconnu'
+    realisateur = directeur ? directeur.name : 'Inconnu'
   } else {
     realisateur = (donnees.created_by || []).map((p: any) => p.name).join(', ') || null
   }

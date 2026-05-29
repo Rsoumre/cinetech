@@ -2,9 +2,12 @@ import './home.css'
 import { appelerAPI } from '../api'
 import { allerVers } from '../router'
 
+// Promise<HTMLElement> → cette fonction est async et retourne un élément HTML une fois terminée
 export async function pagAccueil(): Promise<HTMLElement> {
   const section = document.createElement('div')
 
+  // Promise.all([...]) → lance les deux appels API EN MÊME TEMPS
+  // et attend que les deux soient terminés avant de continuer
   const [filmsData, seriesData] = await Promise.all([
     appelerAPI('movie/popular'),
     appelerAPI('tv/popular'),

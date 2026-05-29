@@ -2,6 +2,7 @@ import './films.css'
 import { appelerAPI } from '../api'
 import { allerVers } from '../router'
 
+// Promise<HTMLElement> → cette fonction est async et retourne un élément HTML une fois terminée
 export async function pagFilms(page: number = 1): Promise<HTMLElement> {
   const section = document.createElement('div')
 

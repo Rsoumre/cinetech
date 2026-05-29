@@ -2,6 +2,7 @@ import './series.css'
 import { appelerAPI } from '../api'
 import { allerVers } from '../router'
 
+// Promise<HTMLElement> → cette fonction est async et retourne un élément HTML une fois terminée
 export async function pagSeries(page: number = 1): Promise<HTMLElement> {
   const section = document.createElement('div')
 
@@ -37,6 +38,8 @@ export async function pagSeries(page: number = 1): Promise<HTMLElement> {
   const btnPrecedent = document.createElement('button')
   btnPrecedent.textContent = '← Précédent'
   btnPrecedent.disabled = page === 1
+  // undefined → on ne donne pas d'id ni de type (pas utile ici), mais on doit quand même les mettre
+  // parce que numPage est le 4ème paramètre de allerVers
   btnPrecedent.addEventListener('click', () => allerVers('series', undefined, undefined, page - 1))
 
   const info = document.createElement('span')
