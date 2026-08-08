@@ -1,40 +1,64 @@
 .page-titre {
-  padding: 24px 32px 8px;
+  padding: 32px 40px 12px;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: -0.3px;
 }
 
 .grille {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px 32px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 16px 40px 40px;
 }
 
 .carte {
-  width: 150px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .carte:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+  z-index: 2;
 }
 
 .carte img {
   width: 100%;
-  border-radius: 6px;
   aspect-ratio: 2/3;
   object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.carte-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+  border-radius: var(--radius);
+  opacity: 0;
+  transition: opacity 0.25s;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+
+.carte:hover .carte-overlay {
+  opacity: 1;
 }
 
 .carte p {
   margin-top: 8px;
-  font-size: 13px;
-  color: #ccc;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding: 0 2px;
 }
 
 .pagination {
@@ -42,46 +66,51 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  padding: 8px 32px 32px;
+  padding: 8px 40px 48px;
 }
 
 .pagination button {
-  padding: 8px 20px;
-  background: #e50914;
+  padding: 9px 24px;
+  background: var(--red);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
-  transition: background 0.2s;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
 }
 
 .pagination button:hover:not(:disabled) {
-  background: #b00710;
+  background: var(--red-dark);
+  transform: translateY(-1px);
 }
 
 .pagination button:disabled {
-  background: #333;
-  color: #666;
+  background: #222;
+  color: var(--text-dim);
   cursor: default;
+}
+
+.pagination span {
+  color: var(--text-muted);
+  font-size: 14px;
+  min-width: 80px;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
   .page-titre {
-    padding: 16px 16px 8px;
+    padding: 20px 16px 8px;
   }
 
   .grille {
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
     padding: 12px 16px 24px;
   }
 
-  .carte {
-    width: calc(50% - 10px);
-  }
-
   .pagination {
-    padding: 8px 16px 24px;
-    justify-content: center;
+    padding: 8px 16px 32px;
   }
 }

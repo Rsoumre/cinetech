@@ -1,6 +1,7 @@
 import './series.css'
 import { appelerAPI } from '../api'
 import { allerVers } from '../router'
+import { creerHero } from '../components/hero'
 
 // Promise<HTMLElement> → cette fonction est async et retourne un élément HTML une fois terminée
 export async function pagSeries(page: number = 1): Promise<HTMLElement> {
@@ -9,6 +10,10 @@ export async function pagSeries(page: number = 1): Promise<HTMLElement> {
   const donnees = await appelerAPI('tv/popular', page)
   const series = donnees.results
   const totalPages = donnees.total_pages
+
+  // Hero : série aléatoire parmi les 5 premières
+  const heroSerie = series[Math.floor(Math.random() * 5)]
+  section.appendChild(creerHero(heroSerie, 'serie'))
 
   const titre = document.createElement('h2')
   titre.className = 'page-titre'

@@ -1,6 +1,7 @@
 import './films.css'
 import { appelerAPI } from '../api'
 import { allerVers } from '../router'
+import { creerHero } from '../components/hero'
 
 // Promise<HTMLElement> → cette fonction est async et retourne un élément HTML une fois terminée
 export async function pagFilms(page: number = 1): Promise<HTMLElement> {
@@ -9,6 +10,10 @@ export async function pagFilms(page: number = 1): Promise<HTMLElement> {
   const donnees = await appelerAPI('movie/popular', page)
   const films = donnees.results
   const totalPages = donnees.total_pages
+
+  // Hero : film aléatoire parmi les 5 premiers
+  const heroFilm = films[Math.floor(Math.random() * 5)]
+  section.appendChild(creerHero(heroFilm, 'film'))
 
   const titre = document.createElement('h2')
   titre.className = 'page-titre'

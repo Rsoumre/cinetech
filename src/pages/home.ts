@@ -1,6 +1,7 @@
 import './home.css'
 import { appelerAPI } from '../api'
 import { allerVers } from '../router'
+import { creerHero } from '../components/hero'
 
 // Promise<HTMLElement> → cette fonction est async et retourne un élément HTML une fois terminée
 export async function pagAccueil(): Promise<HTMLElement> {
@@ -15,6 +16,13 @@ export async function pagAccueil(): Promise<HTMLElement> {
 
   const films = filmsData.results
   const series = seriesData.results
+
+  // Hero : alterne aléatoirement entre un film et une série
+  const heroEstFilm = Math.random() > 0.5
+  const heroItem = heroEstFilm
+    ? films[Math.floor(Math.random() * 5)]
+    : series[Math.floor(Math.random() * 5)]
+  section.appendChild(creerHero(heroItem, heroEstFilm ? 'film' : 'serie'))
 
   // Films
   const titreFilms = document.createElement('h2')

@@ -1,36 +1,38 @@
 .commentaires {
-  margin-top: 48px;
-  padding-bottom: 48px;
+  margin-top: 56px;
+  padding-bottom: 56px;
 }
 
 .commentaires h3 {
   font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
 }
 
 .formulaire-commentaire {
-  background: #1a1a1a;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 24px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 28px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  border: 1px solid #2a2a2a;
+  gap: 14px;
+  border: 1px solid var(--border);
 }
 
 .formulaire-commentaire input,
 .formulaire-commentaire textarea {
-  background: #242424;
+  background: var(--bg-input);
   border: 1px solid #333;
-  border-radius: 6px;
-  color: white;
-  padding: 10px 14px;
+  border-radius: 8px;
+  color: var(--text);
+  padding: 11px 16px;
   font-size: 14px;
+  font-family: inherit;
   width: 100%;
   outline: none;
-  transition: border 0.2s;
+  transition: border-color 0.2s;
 }
 
 .formulaire-commentaire input:focus,
@@ -40,47 +42,57 @@
 
 .formulaire-commentaire input::placeholder,
 .formulaire-commentaire textarea::placeholder {
-  color: #666;
+  color: var(--text-dim);
 }
 
 .formulaire-commentaire textarea {
-  height: 90px;
+  height: 100px;
   resize: vertical;
+  line-height: 1.6;
 }
 
 .formulaire-commentaire button {
   width: fit-content;
-  padding: 9px 22px;
-  background: #e50914;
+  padding: 10px 24px;
+  background: var(--red);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
-  transition: background 0.2s;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background 0.2s, transform 0.15s;
 }
 
 .formulaire-commentaire button:hover {
-  background: #b00710;
+  background: var(--red-dark);
+  transform: translateY(-1px);
 }
 
 .commentaire {
-  background: #1a1a1a;
-  border-radius: 10px;
-  padding: 16px 20px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 18px 20px;
   margin-bottom: 12px;
-  border: 1px solid #2a2a2a;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  transition: border-color 0.2s;
+}
+
+.commentaire:hover {
+  border-left-color: #ff4d57;
 }
 
 .commentaire-auteur {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 14px;
-  color: #fff;
-  margin-bottom: 6px;
+  color: var(--text);
+  margin-bottom: 8px;
 }
 
 .commentaire-texte {
   color: #bbb;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
 }

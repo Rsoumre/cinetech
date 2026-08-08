@@ -1,0 +1,133 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background-color: #111;
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(10, 10, 10, 0.7) 45%,
+    rgba(10, 10, 10, 0.1) 100%
+  ),
+  linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.8) 0%,
+    transparent 40%
+  );
+}
+
+.hero-contenu {
+  position: relative;
+  z-index: 1;
+  padding: 0 48px 52px;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 4px 12px;
+  background: var(--red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+}
+
+.hero-titre {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.hero-note {
+  color: #f5c518;
+  font-weight: 700;
+}
+
+.hero-synopsis {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.hero-btn-primary {
+  padding: 11px 28px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.hero-btn-primary:hover {
+  background: rgba(255,255,255,0.85);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 420px;
+    align-items: flex-end;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(10,10,10,0.95) 0%,
+      rgba(10,10,10,0.5) 60%,
+      rgba(10,10,10,0.1) 100%
+    );
+  }
+
+  .hero-contenu {
+    padding: 0 20px 36px;
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .hero-titre {
+    font-size: 26px;
+  }
+
+  .hero-synopsis {
+    display: none;
+  }
+}
